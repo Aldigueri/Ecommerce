@@ -1,0 +1,35 @@
+﻿@model Ecommerce.Models.ViewModels.RevendedorViewModel
+
+<form action="~/Revendedor/Alterar/@ViewBag.Revendedor.Id" method="post">
+
+    <h2 style="color:white;" class="text-uppercase">Editar Usuário</h2>
+
+    <div style="color:white;" class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="sobrenome" class="control-label text-uppercase">Nome</label>
+                    <input type="text" value="@ViewBag.Revendedor.Nome" class="form-control" id="nome" name="RevendedorViewModel.Nome" placeholder="Digite seu Nome" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="cpf" class="control-label text-uppercase">CPF</label>
+                    <input type="text" value="@ViewBag.Revendedor.CPF" class="form-control" id="cpf" name="RevendedorViewModel.CPF" placeholder="Digite seu CPF" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label style="opacity:0;">conselho</label><br />
+                    <input type="submit" value="CADASTRAR"
+                           class="btn btn-success enviar" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>

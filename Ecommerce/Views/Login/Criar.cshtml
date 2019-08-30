@@ -1,0 +1,180 @@
+﻿@model Ecommerce.Models.Usuario
+@using Ecommerce.Models.Enum
+
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<body class="bg-light">
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+            <div class="card card-register mx-auto mt-5">
+                <div class="card-header text-center"><h5>Cadastrar uma conta</h5></div>
+                <div class="card-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Login, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Login, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Senha, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+
+       
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cep, "CEP", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control" }, id = "cep", value = "cep" })
+                        @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <label for="button" style="opacity:0;">Pesquisar</label><br />
+                    <button id="button" type="button" class="btn btn-primary button" onclick="pesquisacep(Cep.value)">Pesquisar</button>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NomeRua, "Nome da rua", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.NomeRua, new { htmlAttributes = new { @class = "form-control" }, id = "rua" })
+                        @Html.ValidationMessageFor(model => model.NomeRua, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Numero, "Nº", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" }, id = "bairro" })
+                        @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Estado, "Estados", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" }, id = "estado" })
+                        @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Cidade, "Cidade", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" }, id = "cidade" })
+                        @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <script>
+                    function meu_callback(conteudo) {
+                        if (!("erro" in conteudo)) {
+                            //Atualiza os campos com os valores.
+                            document.getElementById('NomeRua').value = (conteudo.logradouro);
+                            document.getElementById('Bairro').value = (conteudo.bairro);
+                            document.getElementById('Cidade').value = (conteudo.localidade);
+                            document.getElementById('Estado').value = (conteudo.uf);
+                        } //end if.
+                        else {
+                            //CEP não Encontrado.
+                            limpa_formulario_cep();
+                            alert("CEP não encontrado.");
+                            document.getElementById('Cep').value = ("");
+                        }
+                    }
+                    function pesquisacep(valor) {
+                        //Nova variável "cep" somente com dígitos.
+                        var cep = valor.replace(/\D/g, '');
+                        //Verifica se campo cep possui valor informado.
+                        if (cep !== "") {
+                            //Expressão regular para validar o CEP.
+                            var validacep = /^[0-9]{8}$/;
+                            //Valida o formato do CEP.
+                            if (validacep.test(cep)) {
+                                //Preenche os campos com "..." enquanto consulta webservice.
+                                document.getElementById('NomeRua').value = "...";
+                                document.getElementById('Bairro').value = "...";
+                                document.getElementById('Cidade').value = "...";
+                                document.getElementById('Estado').value = "...";
+                                //Cria um elemento javascript.
+                                var script = document.createElement('script');
+                                //Sincroniza com o callback.
+                                script.src = '//viacep.com.br/ws/' + cep + '/json/?callback=meu_callback';
+                                //Insere script no documento e carrega o conteúdo.
+                                document.body.appendChild(script);
+                            }
+                            //end if.
+                            else {
+                                //cep é inválido.
+                                limpa_formulario_cep();
+                                alert("Formato de CEP inválido.");
+                            }
+                        }
+                        //end if.
+                        else {
+                            //cep sem valor, limpa formulário.
+                            limpa_formulario_cep();
+                        }
+                    }
+                </script>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Cadastrar" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    }
+</body>

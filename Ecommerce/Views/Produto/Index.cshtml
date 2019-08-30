@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Ecommerce.Models.Produto>
+
+
+<title>OurVibbe - Criar Produtos</title>
+<p>
+    @Html.ActionLink("Incluir Novo Produto", "Criar", "Produto", new { @class = "btn btn-success ml-md-3" })
+</p>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+
+        <div class="search-form ml-auto">
+            <div class="form-w3layouts-grid">
+
+                <label class="search" type="search">Pesquisar</label>
+
+                <input class="form-control btn" type="text" name="pesquisa" id="pesquisa" placeholder="Pesquise Aqui...">
+
+            </div>
+        </div>
+
+        <i class="fas fa-table"></i>
+
+        Lista de produtos
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Categoria.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Preco)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantidade)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descricao)
+                        </th>
+
+                        <th>Alterações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="busca">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Categoria.Nome)
+                            </td>
+                            <td class=" info-nome">
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Preco)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantidade)
+                            </td>
+
+                            <td>
+                                @*Limitar campo de caracteres para visualizar na tabela*@
+                                @item.Descricao.Substring(0, (item.Descricao.Length > 20 ? 20 : item.Descricao.Length))@Html.ActionLink("...", "Detalhes", new { id = item.Id })
+                            </td>
+
+
+
+                            <td>
+                                @Html.ActionLink("Editar", "Editar", new { id = item.Id }, new { @class = "btn btn-sm btn-warning" })
+                                @Html.ActionLink("Detalhar", "Detalhes", new { id = item.Id }, new { @class = "btn btn-sm btn-secondary " })
+                                @Html.ActionLink("Deletar", "Deletar", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Content/js/pesquisa.js"></script>
+
+
+
+
+
+
+
+
+

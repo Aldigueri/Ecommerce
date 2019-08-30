@@ -1,0 +1,67 @@
+﻿@model Ecommerce.Models.Usuario
+@{
+    ViewBag.Title = "Deletar";
+}
+
+<h2 style="color:white;">Tem certeza que deseja excluir? </h2>
+
+
+<table style="color:white;" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UsuarioTipo)
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Nome)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(model => model.CPF)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(model => model.Login)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(model => model.UsuarioTipo)
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <input type="submit" value="Deletar" class="btn btn-danger" /> |
+        @Html.ActionLink("Voltar para lista", "Lista")
+    </div>
+}
+   
+

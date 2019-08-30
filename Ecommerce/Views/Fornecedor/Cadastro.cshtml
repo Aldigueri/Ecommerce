@@ -1,0 +1,43 @@
+﻿@model Ecommerce.Models.ViewModels.FornecedorViewModel
+
+
+<form action="Cadastro" method="post">
+
+   
+
+    <div class="card mb-3">
+        <div class="card-header">
+      
+            <h2 class="text-uppercase">Cadastro de Fornecedores</h2>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="nomeEmpresa" class="control-label text-uppercase">Nome Empresa</label>
+                    <input autofocus type="text" class="form-control" id="nomeEmpresa" name="FornecedorViewModel.NomeEmpresa" placeholder="Digite o Nome da Empresa" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="nome" class="control-label text-uppercase">Nome</label>
+                    <input type="text" class="form-control" id="nome" name="FornecedorViewModel.Nome" placeholder="Digite seu Nome" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="cpf" class="control-label text-uppercase">CPF</label>
+                    <input type="text" class="form-control" id="cpf" name="FornecedorViewModel.CPF" placeholder="Digite seu CPF" required>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label style="opacity:0;">Fornecedor</label><br />
+                    <input class="btn btn-success" type="submit" value="CADASTRAR" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

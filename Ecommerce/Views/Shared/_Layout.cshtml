@@ -1,0 +1,232 @@
+﻿@using Ecommerce.Models
+@using System.Linq
+@using Microsoft.EntityFrameworkCore
+@using Ecommerce.Models.Enum
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>OurVibbe | Home</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Baggage Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta tag Keywords -->
+    <!-- Custom-Files -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css">
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="~/Content/css/style.css" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <!-- font-awesome-icons -->
+    <link href="~/Content/css/font-awesome.css" rel="stylesheet" />
+    <!-- //font-awesome-icons -->
+    <!-- /Fonts -->
+    <link href="fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" />
+    <link href="~/Content/single.html" />
+    <link href="~/Content/Site.css"rel="stylesheet" />
+    <!-- //Fonts -->
+
+</head>
+
+<body>
+    <!-- //header -->
+    <header class="py-sm-3 pt-3 pb-2" id="home">
+        <div class="container">
+            <!-- nav -->
+            <div class="top-w3pvt d-flex">
+                <div id="logo">
+                    <h1> <a href="/Home/Index"><span class="log-w3pvt">O</span>urVibbe</a> <label class="sub-des">Loja Online</label></h1>
+                </div>
+                @if (Session.Keys.Cast<String>().Any(c => c == "usuarioLogado"))
+                {
+                    <div class="forms ml-auto pull-right">
+                        <a href="/Login/Logout" class="btn"><span class="fa fa-user-circle-o"></span> Sair</a>
+                       
+                    </div>
+
+                    if ((Session["usuarioLogado"] as Usuario).UsuarioTipo == UsuarioTipo.Cliente)
+                    {
+                                         
+
+                    }
+
+                }
+                else
+                {
+                    <div class="forms ml-auto">
+                        <a href="/Login/Index" class="btn"><span class="fa fa-user-circle-o"></span> Entrar</a>
+                        <a href="/Login/Criar" class="btn"><span class="fa fa-pencil-square-o"></span> Registrar</a>
+                    </div>
+                }
+                </ul>
+            </div>
+
+            <!-- Personalização da barra de navegação de acordo com o usuário -->
+            <div class="navbar-collapse">
+                <ul class="nav nav-pills navbar-btn text-uppercase mudacor">
+                   
+                </ul>
+            </div>
+
+            <div class="nav-top-wthree">
+                <nav>
+                    <label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+                    <input type="checkbox" id="drop" />
+                    <ul class="menu">
+                        <li class="active"><a href="/Home/Index">Home</a></li>
+                        <li><a href="/Home/About">Sobre</a></li>
+                        @if (Session.Keys.Cast<String>().Any(c => c == "usuarioLogado"))
+                        {
+                            if ((Session["usuarioLogado"] as Usuario).UsuarioTipo == UsuarioTipo.Administrador)
+                            {
+                                <li>
+                                    <label for="drop-2" class="toggle">
+                                        Dropdown <span style="position:absolute;" class="fa fa-angle-down" aria-hidden="true"></span>
+                                    </label>
+                                    <a href="#">Funções <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                    <input type="checkbox" id="drop-2" />
+                                    <ul>
+                                        <li><a href="/LoginAdm/Lista" class="drop-text">Contas</a></li>
+                                        <li><a href="/Produto/Index" class="drop-text">Produtos</a></li>
+                                        <li><a href="/Categoria/Index" class="drop-text">Categorias</a></li>
+                                        <li><a href="/Fornecedor/Index" class="drop-text">Fornecedores</a></li>
+                                        <li><a href="/Revendedor/Index" class="drop-text">Revendedores</a></li>
+                                        <li><a href="/HistoricoCompras/Index" class="drop-text">Compras</a></li>
+                                    </ul>
+
+
+                                </li>
+                            }
+                        }
+                        <li>
+                            <!-- First Tier Drop Down -->
+                            <label for="drop-2" class="toggle">
+                                Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span>
+                            </label>
+                            <a href="#">Categoria <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                            <input type="checkbox" id="drop-2" />
+                            <ul>
+                                <li><a href="/FrenteLoja/Index" class="drop-text">Camisa</a></li>
+                                @*<li><a href="about.html" class="drop-text">Feminino</a></li>*@
+                           
+
+                            </ul>
+                        </li>
+
+
+                        <li><a href="/FrenteLoja/Index">Loja</a></li>
+                        <li><a href="/Home/Contact">Contato</a></li>
+
+                   
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+    <!-- //header -->
+    <!--/banner-->
+
+    <section class="banner-bottom py-5">
+        <div class="container py-md-3">
+            @RenderBody()
+        </div>
+    </section>
+
+
+    <!-- //banner-->
+    <!--/banner-bottom -->
+    <!--//shipping-->
+    <!-- footer -->
+    <div class="footer_agileinfo_topf py-5">
+        <div class="container py-md-5">
+            <div class="row">
+                <div class="col-lg-3 footer_wthree_gridf mt-lg-5">
+                    <h2>
+                        <a href="index.html">
+                            <span>O</span>urVibbe
+                        </a>
+                    </h2>
+                    <label class="sub-des2">Loja Online</label>
+                </div>
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-4">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <a href="index.html"><span class="fa fa-angle-right" aria-hidden="true"></span> Home</a>
+                        </li>
+                        <li>
+                            <a href="/Home/About"><span class="fa fa-angle-right" aria-hidden="true"></span> Sobre</a>
+                        </li>
+                        <li>
+                            <a href="/FrenteLoja/Index"><span class="fa fa-angle-right" aria-hidden="true"></span> Loja</a>
+                        </li>
+                   
+                    </ul>
+                </div>
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-sm-4 mt-3">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <a href="/Home/index"><span class="fa fa-angle-right" aria-hidden="true"></span> Extra Page</a>
+                        </li>
+
+                        <li>
+                            <a href="#"><span class="fa fa-angle-right" aria-hidden="true"></span> Terms & Conditions</a>
+                        </li>
+                    
+                        <li>
+                            <a href="/Home/Contact"><span class="fa fa-angle-right" aria-hidden="true"></span> Fale Conosco</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 footer_wthree_gridf mt-md-0 mt-sm-4 mt-3">
+                    <ul class="footer_wthree_gridf_list">
+                        <li>
+                            <a href="/Login/Index"><span class="fa fa-angle-right" aria-hidden="true"></span> Login </a>
+                        </li>
+
+                        <li>
+                            <a href="/Login/Criar"><span class="fa fa-angle-right" aria-hidden="true"></span>Registrar</a>
+                        </li>
+                        <li>
+                            <a href="/Home/Contact"><span class="fa fa-angle-right" aria-hidden="true"></span>Privacy & Policy</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="w3ls-fsocial-grid">
+                <h3 class="sub-w3ls-headf">Siga nas Redes Sociais</h3>
+                <div class="social-ficons">
+                    <ul>
+                        <li><a href="https://www.facebook.com/ourvibbe/"><span class="fa fa-facebook"></span> Facebook</a></li>
+                        <li><a href="https://www.instagram.com/ourvibbe/?hl=pt-br"><span class="fa fa-instagram"></span> Instagram</a></li>
+                        <li><a href="https://contacts.google.com/?hl=pt-PT"><span class="fa fa-google"></span>Google</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="move-top text-center mt-lg-4 mt-3">
+                <a href="#home"><span class="fa fa-angle-double-up" aria-hidden="true"></span></a>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+    <!-- copyright -->
+  
+    <!-- //copyright -->
+
+</body>
+
+</html>

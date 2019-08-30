@@ -1,0 +1,78 @@
+﻿@model List<Ecommerce.Models.Produto>
+
+
+<h3>Catálogo</h3>
+
+
+<body>
+    <!-- Page Content -->
+
+
+    <div class="col-lg-9">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="clearfix"></div>
+
+                <div class="col-lg-11" style="margin-left: 50px">
+
+
+                    @{
+                        const int TAMANHO_PAGINA = 4;
+
+                        int paginas = (int)Math.Ceiling((double)Model.Count() / TAMANHO_PAGINA);
+                    }
+
+                    @for (int pagina = 0; pagina < paginas; pagina++)
+                    {
+
+                        <div class="item @(pagina == 0 ? "active" : "")">
+                            <div class="row">
+
+                                @{
+                                    var produtosDaPagina = Model.Skip(pagina * TAMANHO_PAGINA).Take(TAMANHO_PAGINA);
+                                }
+
+                                @foreach (var produto in produtosDaPagina)
+                                {
+
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card h-100">
+
+                                            @*ver se o produto tem imagem ou n, se n tiver adicionar o jpg (semimagem)*@
+                                            @if (!String.IsNullOrWhiteSpace(produto.Img))
+                                            {
+                                                <a href="#"><img class="card-img-top" src="data:image/jpeg;base64,@produto.Img" @*style="width: 316px; height: 179px"*@ alt=""></a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#"><img class="card-img-top" src="~/Content/semimagemjpg.jpg" style="width: 300px; height: 170px" alt=""></a>
+                                            }
+                                            <div class="card-footer" style="margin-top: 0.3px"></div>
+
+                                            <div class="card-body">
+                                                <h4 class="card-title">
+                                                    <a href="#">@produto.Nome</a>
+                                                </h4>
+                                                <h5>R$@produto.Preco</h5>
+                                                <p class="card-text">@produto.Descricao</p>
+                                            </div>
+
+                                            <div class="card-footer">
+                                                @Html.ActionLink("Comprar", "Produto", new { Id = produto.Id }, new { @class = "btn btn-sm btn-primary " })
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

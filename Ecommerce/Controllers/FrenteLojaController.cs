@@ -42,17 +42,19 @@ namespace Ecommerce.Controllers
             dao.Atualizar(produto);
 
             GeraRegistroHistorico(produto);
+   
 
             return RedirectToAction("CompraRealizada");
         }
 
         private void GeraRegistroHistorico(Produto produto)
         {
-            var HistoricoCompras = new HistoricoCompras((int)Session["usuarioId"], produto.Id, produto.CategoriaId);
+            var HistoricoCompras = new HistoricoCompras((int)Session["usuarioId"], produto.Id, produto.CategoriaId, produto.Preco);
             var historicoDAO = new HistoricoComprasDAO();
             historicoDAO.Adiciona(HistoricoCompras);
 
         }
+
 
         public ActionResult CompraRealizada()
         {

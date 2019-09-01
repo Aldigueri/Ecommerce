@@ -19,7 +19,7 @@ namespace Ecommerce.Controllers
             return View(db.Categorias.ToList());
         }
 
-        // GET: CategoriaProdutoes/Details/5
+        // GET: Categoria/Details/5
         public ActionResult Detalhes(int? id)
         {
             if (id == null)
@@ -34,13 +34,13 @@ namespace Ecommerce.Controllers
             return View(categoria);
         }
 
-        // GET: CategoriaProdutoes/Create
+        // GET: Categoria/Create
         public ActionResult Criar()
         {
             return View();
         }
 
-        // POST: CategoriaProdutoes/Create
+        // POST: Categoria/Create
       
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -56,7 +56,7 @@ namespace Ecommerce.Controllers
             return View(categoria);
         }
 
-        // GET: CategoriaProdutoes/Edit/5
+        // GET: Categoria/Edit/5
         public ActionResult Editar(int? id)
         {
             if (id == null)
@@ -71,7 +71,7 @@ namespace Ecommerce.Controllers
             return View(categoria);
         }
 
-        // POST: CategoriaProdutoes/Edit/5
+        // POST: Categoria/Edit/5
      
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -86,7 +86,7 @@ namespace Ecommerce.Controllers
             return View(categoria);
         }
 
-        // GET: CategoriaProdutoes/Delete/5
+        // GET: Categoria/Delete/5
         public ActionResult Deletar(int? id)
         {
             if (id == null)
@@ -101,7 +101,7 @@ namespace Ecommerce.Controllers
             return View(categoria);
         }
 
-        // POST: CategoriaProdutoes/Delete/5
+        // POST: Categoria/Delete/5
         [HttpPost, ActionName("Deletar")]
         [ValidateAntiForgeryToken]
         public ActionResult DeletadoSucesso(int id)

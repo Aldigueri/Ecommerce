@@ -29,28 +29,34 @@ Lista de Compras
                         <th>
                             @Html.DisplayNameFor(model => model.DataPedido)
                         </th>
-              
+                        <th>
+                            @Html.DisplayNameFor(model => model.Preco)
+                        </th>
+
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach (var historico in Model)
                     {
-                        <tr>
-                            <td>
-                                @historico.Usuario.Nome
-                            </td>
+                    <tr>
+                        <td>
+                            @historico.Usuario.Nome
+                        </td>
 
-                            <td>
-                                @historico.Produto.Nome
-                            </td>
-                            <td>
-                                @historico.Categoria.Nome
-                            </td>
-                            <td>
-                                @historico.DataPedido
-                            </td>
-                        </tr>
+                        <td>
+                            @historico.Produto.Nome
+                        </td>
+                        <td>
+                            @historico.Categoria.Nome
+                        </td>
+                        <td>
+                            @historico.DataPedido
+                        </td>
+                        <td>
+                            @historico.Preco
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

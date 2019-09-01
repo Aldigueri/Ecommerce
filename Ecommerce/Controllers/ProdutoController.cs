@@ -1,21 +1,27 @@
 ﻿using Ecommerce.Context;
 using Ecommerce.DAO;
+using Ecommerce.Filtros;
 using Ecommerce.Models;
+using Ecommerce.Models.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Ecommerce.Controllers
 {
+  
     public class ProdutoController : Controller
     {
         private EcommerceContext db = new EcommerceContext();
         ProdutoDAO produtoDAO = new ProdutoDAO();
         CategoriaDAO categoriaDAO = new CategoriaDAO();
 
+
+        
         public ActionResult Index()
         {
             var produtos = db.Produtos.Select(x => x).ToList();
@@ -154,11 +160,12 @@ namespace Ecommerce.Controllers
         public ActionResult DecrementaQtd(int id)
         {
             ProdutoDAO dao = new ProdutoDAO();
-            Produto produto = dao.BuscaPorId(id);
+            Produto produto = dao.BuscaPorId(id);         
             produto.Quantidade--;
             dao.Atualizar(produto);
 
             GeraRegistroHistorico(produto);
+        
 
    
             return RedirectToAction("DecrementaQtd");
@@ -166,13 +173,12 @@ namespace Ecommerce.Controllers
 
         private void GeraRegistroHistorico(Produto produto)
         {
-            var HistoricoCompras = new HistoricoCompras((int)Session["usuarioId"], produto.Id, produto.CategoriaId);
+            var HistoricoCompras = new HistoricoCompras((int)Session["usuarioId"], produto.Id, produto.CategoriaId, produto.Preco);
             var historicoDAO = new HistoricoComprasDAO();
             historicoDAO.Adiciona(HistoricoCompras);
 
         }
 
-     
 
         public ActionResult CompraRealizada()
         {

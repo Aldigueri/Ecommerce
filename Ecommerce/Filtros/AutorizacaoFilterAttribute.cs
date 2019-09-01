@@ -39,23 +39,10 @@ namespace Ecommerce.Filtros
             {
                 filterContext.Result = new RedirectToRouteResult(
                     new RouteValueDictionary(
-                        new
-                        {controller = "Login",  action = "Index"   }));
+                        new {controller = "Login",  action = "Index"   }));
             }
         }
 
-        //public override void OnActionExecuting(ActionExecutingContext filterContext)
-        //{
-        //    object cadastro = filterContext.HttpContext.Session["usuarioLogado"];
-
-        //    if (cadastro == null)
-        //    {
-        //        filterContext.Result = new RedirectToRouteResult(
-        //            new RouteValueDictionary(
-        //                new { controller = "Login", action = "Index" }
-        //                )
-        //            );
-        //    }
-        //}
+    
     }
 }

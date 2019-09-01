@@ -27,17 +27,20 @@ namespace Ecommerce.Models
 
         public DateTime DataPedido { get; set; }
 
+        public double Preco { get; set; }
+
         public HistoricoCompras()
         {
 
         }
 
-        public HistoricoCompras(int usuarioId, int produtoId, int categoriaId)
+        public HistoricoCompras(int usuarioId, int produtoId, int categoriaId, double preco)
         {
             UsuarioId = usuarioId;
             ProdutoId = produtoId;
             CategoriaId = categoriaId;
             DataPedido = DateTime.Now;
+            Preco = preco;
         }
 
 

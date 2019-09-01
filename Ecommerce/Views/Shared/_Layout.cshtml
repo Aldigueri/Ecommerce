@@ -51,14 +51,27 @@
                 {
                     <div class="forms ml-auto pull-right">
                         <a href="/Login/Logout" class="btn"><span class="fa fa-user-circle-o"></span> Sair</a>
-                       
+
                     </div>
 
-                    if ((Session["usuarioLogado"] as Usuario).UsuarioTipo == UsuarioTipo.Cliente)
+                    @*if ((Session["usuarioLogado"] as Usuario).UsuarioTipo == UsuarioTipo.Cliente)
                     {
-                                         
+                        <li>
+                            <label for="drop-2" class="toggle">
+                                Dropdown <span style="position:absolute;" class="fa fa-angle-down" aria-hidden="true"></span>
+                            </label>
+                            <a href="#">Minhas Compras <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                            <input type="checkbox" id="drop-2" />
+                            <ul>
+                                <li><a href="/ClienteCompras/Index" class="drop-text">Compras</a></li>
+                             
+                            </ul>
 
-                    }
+
+                        </li>
+
+
+                    }*@
 
                 }
                 else
@@ -101,12 +114,33 @@
                                         <li><a href="/Categoria/Index" class="drop-text">Categorias</a></li>
                                         <li><a href="/Fornecedor/Index" class="drop-text">Fornecedores</a></li>
                                         <li><a href="/Revendedor/Index" class="drop-text">Revendedores</a></li>
+                                        <li><a href="/Parceria/Index" class="drop-text">Parceiros</a></li>
                                         <li><a href="/HistoricoCompras/Index" class="drop-text">Compras</a></li>
                                     </ul>
 
 
                                 </li>
                             }
+
+                            if ((Session["usuarioLogado"] as Usuario).UsuarioTipo == UsuarioTipo.Cliente)
+                            {
+                                <li>
+                                    <label for="drop-2" class="toggle">
+                                        Dropdown <span style="position:absolute;" class="fa fa-angle-down" aria-hidden="true"></span>
+                                    </label>
+                                    <a href="#">Minhas Compras <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                    <input type="checkbox" id="drop-2" />
+                                    <ul>
+                                        <li><a href="/HistoricoCompras/Index" class="drop-text">Compras</a></li>
+
+                                    </ul>
+
+
+                                </li>
+
+
+                            }
+
                         }
                         <li>
                             <!-- First Tier Drop Down -->
@@ -118,7 +152,7 @@
                             <ul>
                                 <li><a href="/FrenteLoja/Index" class="drop-text">Camisa</a></li>
                                 @*<li><a href="about.html" class="drop-text">Feminino</a></li>*@
-                           
+
 
                             </ul>
                         </li>
@@ -127,7 +161,7 @@
                         <li><a href="/FrenteLoja/Index">Loja</a></li>
                         <li><a href="/Home/Contact">Contato</a></li>
 
-                   
+
 
                     </ul>
                 </nav>

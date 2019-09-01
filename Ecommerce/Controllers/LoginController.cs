@@ -25,11 +25,13 @@ namespace Ecommerce.Controllers
         public ActionResult Autentica(String login, String senha)
         {
             UsuarioDAO dao = new UsuarioDAO();
+            UsuarioTipo tipo = new UsuarioTipo();
             Usuario usuario = dao.Busca(login, senha);
             if (usuario != null)
             {
                 Session["usuarioLogado"] = usuario;
                 Session["usuarioId"] = usuario.Id;
+                
                 return RedirectToAction("Index", "Home");
             }
             else

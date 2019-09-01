@@ -15,7 +15,7 @@ namespace Ecommerce.Context
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Revendedor> Revendedores { get; set; }
         public DbSet<HistoricoCompras> Compras { get; set; }
-
+        public DbSet<Parceria> Parceiros { get; set; }
 
         public EcommerceContext(DbContextOptions<EcommerceContext> options) : base(options)
         {

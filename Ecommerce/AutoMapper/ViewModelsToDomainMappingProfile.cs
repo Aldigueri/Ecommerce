@@ -11,6 +11,9 @@ namespace Ecommerce.AutoMapper
         
             CreateMap<FornecedorViewModel, Fornecedor>();
             CreateMap<RevendedorViewModel, Revendedor>();
+            CreateMap<ParceriaViewModel, Parceria>();
+            CreateMap<UsuarioViewModel, Usuario>();
+            CreateMap<ProdutoViewModel, Produto>();
         }
     }
 }

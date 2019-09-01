@@ -37,9 +37,9 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult Cadastro(RevendedorViewModel revendedorViewModel)
         {
-            var fornecedor = Mapper.Map<RevendedorViewModel, Revendedor>(revendedorViewModel);
+            var revendedores = Mapper.Map<RevendedorViewModel, Revendedor>(revendedorViewModel);
             RevendedorDAO dao = new RevendedorDAO();
-            dao.Adicionar(fornecedor);
+            dao.Adicionar(revendedores);
 
 
             return RedirectToAction("Index");

@@ -35,6 +35,7 @@ namespace Ecommerce.Models
 
         public string Img { get; set; }
 
+
         public Produto(int id, string nome, double preco, string descricao, Categoria categoria)
         {
             Id = id;

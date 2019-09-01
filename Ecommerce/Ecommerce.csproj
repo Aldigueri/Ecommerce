@@ -280,11 +280,13 @@
     <Compile Include="Controllers\LoginAdmController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParceriaController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\RevendedorController.cs" />
     <Compile Include="DAO\CategoriaDAO.cs" />
     <Compile Include="DAO\FornecedorDAO.cs" />
     <Compile Include="DAO\HistoricoComprasDAO.cs" />
+    <Compile Include="DAO\ParceriaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DAO\RevendedorDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
@@ -303,6 +305,18 @@
     <Compile Include="Migrations\20190829201710_initial.designer.cs">
       <DependentUpon>20190829201710_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190831022033_inicia.cs" />
+    <Compile Include="Migrations\20190831022033_inicia.designer.cs">
+      <DependentUpon>20190831022033_inicia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190831024512_iniciall.cs" />
+    <Compile Include="Migrations\20190831024512_iniciall.designer.cs">
+      <DependentUpon>20190831024512_iniciall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190901225006_finalizado.cs" />
+    <Compile Include="Migrations\20190901225006_finalizado.designer.cs">
+      <DependentUpon>20190901225006_finalizado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\EcommerceContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -312,10 +326,13 @@
     <Compile Include="Models\HistoricoCompras.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModel.cs" />
+    <Compile Include="Models\Parceria.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Models\Revendedor.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\ViewModels\FornecedorViewModel.cs" />
+    <Compile Include="Models\ViewModels\ParceriaViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProdutoViewModel.cs" />
     <Compile Include="Models\ViewModels\RevendedorViewModel.cs" />
     <Compile Include="Models\ViewModels\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -478,8 +495,9 @@
     <Content Include="Views\Revendedor\Cadastro.cshtml" />
     <Content Include="Views\Revendedor\Alterar.cshtml" />
     <Content Include="Views\HistoricoCompras\Index.cshtml" />
-    <Content Include="Views\Produto\Lista.cshtml" />
-    <Content Include="Views\FrenteLoja\DecrementaQtd.cshtml" />
+    <Content Include="Views\Parceria\Index.cshtml" />
+    <Content Include="Views\Parceria\Cadastro.cshtml" />
+    <Content Include="Views\Parceria\Alterar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

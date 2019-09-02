@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Ecommerce.Migrations
 {
-    public partial class inicial : Migration
+    public partial class final : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,13 +28,28 @@ namespace Ecommerce.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    NomeEmpresa = table.Column<string>(nullable: true),
-                    Nome = table.Column<string>(nullable: true),
-                    CPF = table.Column<string>(nullable: true)
+                    NomeEmpresa = table.Column<string>(nullable: false),
+                    Nome = table.Column<string>(nullable: false),
+                    CPF = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fornecedores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Parceiros",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    NomeEmpresa = table.Column<string>(nullable: false),
+                    Nome = table.Column<string>(nullable: false),
+                    CPF = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Parceiros", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -42,8 +58,8 @@ namespace Ecommerce.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nome = table.Column<string>(nullable: true),
-                    CPF = table.Column<string>(nullable: true)
+                    Nome = table.Column<string>(nullable: false),
+                    CPF = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,13 +77,13 @@ namespace Ecommerce.Migrations
                     Login = table.Column<string>(nullable: false),
                     CPF = table.Column<string>(nullable: false),
                     UsuarioTipo = table.Column<int>(nullable: false),
-                    Cep = table.Column<string>(nullable: true),
-                    NomeRua = table.Column<string>(nullable: true),
+                    Cep = table.Column<string>(nullable: false),
+                    NomeRua = table.Column<string>(nullable: false),
                     Numero = table.Column<int>(nullable: false),
-                    Complemento = table.Column<string>(nullable: true),
-                    Bairro = table.Column<string>(nullable: true),
-                    Estado = table.Column<string>(nullable: true),
-                    Cidade = table.Column<string>(nullable: true)
+                    Complemento = table.Column<string>(nullable: false),
+                    Bairro = table.Column<string>(nullable: false),
+                    Estado = table.Column<string>(nullable: false),
+                    Cidade = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,8 +111,58 @@ namespace Ecommerce.Migrations
                         column: x => x.CategoriaId,
                         principalTable: "Categorias",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Compras",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProdutoId = table.Column<int>(nullable: false),
+                    CategoriaId = table.Column<int>(nullable: false),
+                    UsuarioId = table.Column<int>(nullable: false),
+                    DataPedido = table.Column<DateTime>(nullable: false),
+                    Preco = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Compras", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Compras_Categorias_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categorias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Compras_Produtos_ProdutoId",
+                        column: x => x.ProdutoId,
+                        principalTable: "Produtos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Compras_Usuarios_UsuarioId",
+                        column: x => x.UsuarioId,
+                        principalTable: "Usuarios",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_CategoriaId",
+                table: "Compras",
+                column: "CategoriaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_ProdutoId",
+                table: "Compras",
+                column: "ProdutoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Compras_UsuarioId",
+                table: "Compras",
+                column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_CategoriaId",
@@ -107,13 +173,19 @@ namespace Ecommerce.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Compras");
+
+            migrationBuilder.DropTable(
                 name: "Fornecedores");
 
             migrationBuilder.DropTable(
-                name: "Produtos");
+                name: "Parceiros");
 
             migrationBuilder.DropTable(
                 name: "Revendedores");
+
+            migrationBuilder.DropTable(
+                name: "Produtos");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");

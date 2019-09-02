@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20190829201710_initial")]
-    partial class initial
+    [Migration("20190902180037_final")]
+    partial class final
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,11 +44,14 @@ namespace Ecommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CPF");
+                    b.Property<string>("CPF")
+                        .IsRequired();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
-                    b.Property<string>("NomeEmpresa");
+                    b.Property<string>("NomeEmpresa")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -65,6 +68,8 @@ namespace Ecommerce.Migrations
 
                     b.Property<DateTime>("DataPedido");
 
+                    b.Property<double>("Preco");
+
                     b.Property<int>("ProdutoId");
 
                     b.Property<int>("UsuarioId");
@@ -78,6 +83,26 @@ namespace Ecommerce.Migrations
                     b.HasIndex("UsuarioId");
 
                     b.ToTable("Compras");
+                });
+
+            modelBuilder.Entity("Ecommerce.Models.Parceria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CPF")
+                        .IsRequired();
+
+                    b.Property<string>("Nome")
+                        .IsRequired();
+
+                    b.Property<string>("NomeEmpresa")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Parceiros");
                 });
 
             modelBuilder.Entity("Ecommerce.Models.Produto", b =>
@@ -114,9 +139,11 @@ namespace Ecommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CPF");
+                    b.Property<string>("CPF")
+                        .IsRequired();
 
-                    b.Property<string>("Nome");
+                    b.Property<string>("Nome")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -129,18 +156,23 @@ namespace Ecommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Bairro");
+                    b.Property<string>("Bairro")
+                        .IsRequired();
 
                     b.Property<string>("CPF")
                         .IsRequired();
 
-                    b.Property<string>("Cep");
+                    b.Property<string>("Cep")
+                        .IsRequired();
 
-                    b.Property<string>("Cidade");
+                    b.Property<string>("Cidade")
+                        .IsRequired();
 
-                    b.Property<string>("Complemento");
+                    b.Property<string>("Complemento")
+                        .IsRequired();
 
-                    b.Property<string>("Estado");
+                    b.Property<string>("Estado")
+                        .IsRequired();
 
                     b.Property<string>("Login")
                         .IsRequired();
@@ -148,7 +180,8 @@ namespace Ecommerce.Migrations
                     b.Property<string>("Nome")
                         .IsRequired();
 
-                    b.Property<string>("NomeRua");
+                    b.Property<string>("NomeRua")
+                        .IsRequired();
 
                     b.Property<int>("Numero");
 

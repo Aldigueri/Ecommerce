@@ -297,25 +297,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190829172044_inicial.cs" />
-    <Compile Include="Migrations\20190829172044_inicial.designer.cs">
-      <DependentUpon>20190829172044_inicial.cs</DependentUpon>
+    <Compile Include="Migrations\20190902180037_final.cs" />
+    <Compile Include="Migrations\20190902180037_final.designer.cs">
+      <DependentUpon>20190902180037_final.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20190829201710_initial.cs" />
-    <Compile Include="Migrations\20190829201710_initial.designer.cs">
-      <DependentUpon>20190829201710_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190831022033_inicia.cs" />
-    <Compile Include="Migrations\20190831022033_inicia.designer.cs">
-      <DependentUpon>20190831022033_inicia.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190831024512_iniciall.cs" />
-    <Compile Include="Migrations\20190831024512_iniciall.designer.cs">
-      <DependentUpon>20190831024512_iniciall.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190901225006_finalizado.cs" />
-    <Compile Include="Migrations\20190901225006_finalizado.designer.cs">
-      <DependentUpon>20190901225006_finalizado.cs</DependentUpon>
+    <Compile Include="Migrations\20190902181045_finall.cs" />
+    <Compile Include="Migrations\20190902181045_finall.designer.cs">
+      <DependentUpon>20190902181045_finall.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EcommerceContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

@@ -29,19 +29,13 @@ namespace Ecommerce.Models
 
         public UsuarioTipo UsuarioTipo { get; set; }
 
-        [Required]
-        public string Cep { get; set; }
-        [Required]
-        public string NomeRua { get; set; }
-        [Required]
-        public int Numero { get; set; }
-        [Required]
-        public string Complemento { get; set; }
-        [Required]
+     
+        public string Cep { get; set; }  
+        public string NomeRua { get; set; }   
+        public int Numero { get; set; }        
+        public string Complemento { get; set; }       
         public string Bairro { get; set; }
-        [Required]
         public string Estado { get; set; }
-        [Required]
         public string Cidade { get; set; }
         public Usuario()
         {

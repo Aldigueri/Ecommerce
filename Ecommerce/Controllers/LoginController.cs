@@ -56,6 +56,10 @@ namespace Ecommerce.Controllers
             {
                 ModelState.AddModelError("Login", "Login existente.");
             }
+            if (db.Usuarios.Where(x => x.CPF == usuario.CPF).Count() > 0)
+            {
+                ModelState.AddModelError("CPF", "CPF existente.");
+            }
             if (ModelState.IsValid)
             {
                 //Seta como padrão o usuario na tabela

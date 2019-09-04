@@ -13,6 +13,7 @@ namespace Ecommerce.Models
         [Required]
         public string Nome { get; set; }
         [Required]
+        [CPF(ErrorMessage = "CPF inválido")]
         public string CPF { get; set; }
 
         public Revendedor()
@@ -26,14 +27,14 @@ namespace Ecommerce.Models
 
             Nome = nome;
 
-            if (validaCPF.IsCpf(cpf) == false)
-            {
-                throw new CampoInvalidException();
-            }
-            else
-            {
-                CPF = cpf;
-            }
+            //if (validaCPF.IsCpf(cpf) == false)
+            //{
+            //    throw new CampoInvalidException();
+            //}
+            //else
+            //{
+            //    CPF = cpf;
+            //}
 
         }
        

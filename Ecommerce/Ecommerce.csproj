@@ -305,6 +305,10 @@
     <Compile Include="Migrations\20190902181045_finall.designer.cs">
       <DependentUpon>20190902181045_finall.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20190904193738_finalizadoo.cs" />
+    <Compile Include="Migrations\20190904193738_finalizadoo.designer.cs">
+      <DependentUpon>20190904193738_finalizadoo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\EcommerceContextModelSnapshot.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Categoria.cs" />

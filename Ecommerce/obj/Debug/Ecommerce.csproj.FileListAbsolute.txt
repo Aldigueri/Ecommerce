@@ -175,4 +175,3 @@ C:\Users\Leeoa\source\repos\Ecommerce\Ecommerce\bin\Google.Apis.Auth.pdb
 C:\Users\Leeoa\source\repos\Ecommerce\Ecommerce\bin\Google.Apis.Auth.xml
 C:\Users\Leeoa\source\repos\Ecommerce\Ecommerce\bin\Google.Apis.Core.pdb
 C:\Users\Leeoa\source\repos\Ecommerce\Ecommerce\bin\Google.Apis.Core.xml
-C:\Users\Leeoa\source\repos\Ecommerce\Ecommerce\obj\Debug\Ecommerce.csprojAssemblyReference.cache

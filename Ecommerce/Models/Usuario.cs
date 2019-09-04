@@ -25,6 +25,7 @@ namespace Ecommerce.Models
         public string Login { get; set; }
 
         [Required]
+        [CPF(ErrorMessage = "CPF inválido")]
         public string CPF { get; set; }
 
         public UsuarioTipo UsuarioTipo { get; set; }
@@ -59,14 +60,14 @@ namespace Ecommerce.Models
             Cidade = cidade;
 
 
-            if (validaCPF.IsCpf(cpf) == false)
-            {
-                throw new CampoInvalidException();
-            }
-            else
-            {
-                CPF = cpf;
-            }
+            //if (validaCPF.IsCpf(cpf) == false)
+            //{
+            //    throw new CampoInvalidException();
+            //}
+            //else
+            //{
+            //    CPF = cpf;
+            //}
 
         }
     }
